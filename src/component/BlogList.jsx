@@ -1,6 +1,26 @@
-import React from 'react'
+import { useEffect, useState } from 'react'
+import {createClient} from 'react-contentful'
 
 const BlogList = () => {
+
+  const [blogPosts, setBlogPost] = useState([]);
+
+  const client = createClient({space: "57fcvfax3hlo", accessToken: "6cJwLWwi9X-acrg9RRQ-RSWEH-zyyDzKHYgdd9K1klc"});
+
+  useEffect(() => {
+    const getAllEntries = async () => {
+      try {
+        await client.getEntries()
+        .then((entries) => {
+          console.log(entries);
+        })
+      } catch (error) {
+        
+      }
+    }
+    getAllEntries();
+  }, [])
+
   return (
     <div>
          <div id="layout" className="pure-g">
@@ -26,7 +46,7 @@ const BlogList = () => {
                   </p>
                 </header>
                 <div className="post-description">
-                  <p>{post.fields.blogSummary}
+                  <p>{post.fields.blogSummary} 
                   </p>
                   <Link
                     to={`/blogDetails/${post.sys.id}`}
