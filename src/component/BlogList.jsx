@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import {createClient} from 'react-contentful'
+import {Link} from 'react-router-dom'
+import {createClient} from 'contentful'
 
 const BlogList = () => {
 
@@ -13,9 +14,10 @@ const BlogList = () => {
         await client.getEntries()
         .then((entries) => {
           console.log(entries);
+          setBlogPost(entries)
         })
       } catch (error) {
-        
+        console.log(error);
       }
     }
     getAllEntries();
@@ -35,13 +37,13 @@ const BlogList = () => {
                   <img src={post.fields.blogImage.fields.file.url} title="" alt={post.fields.title} width="578" height="291" />
                   <h2 className="post-title pt-3">{post.fields.title}</h2>
                   <p className="post-meta">
-                    By <a href="https://thecodeangle.com/" className="post-author">{post.fields.blogAuthor}</a> Date <span></span>
+                    By <span href="https://thecodeangle.com/" className="post-author">{post.fields.blogAuthor}</span> Date <span></span>
                     <small>
                       {new Intl.DateTimeFormat('en-GB', {
                         month: 'long',
                         day: '2-digit',
                         year: 'numeric',
-                      }).format(new Date(post.fields.createDate))}
+                      }).format(post.fields.createDate)}
                     </small>
                   </p>
                 </header>
