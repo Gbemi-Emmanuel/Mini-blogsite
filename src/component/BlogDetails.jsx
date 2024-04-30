@@ -58,7 +58,7 @@ const BlogDetails = () => {
                 </p>
               </header>
               <div className="post-description">
-                <p>{singleBlogPost?.fields?.postContent.content}</p>
+                <p>{singleBlogPost?.fields?.postContent}</p>
                 {/* <ReactMarkdown children={singleBlogPost?.fields?.postContent} />, */}
               </div>
             </section>
