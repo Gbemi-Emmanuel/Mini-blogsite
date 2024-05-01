@@ -13,7 +13,6 @@ const BlogList = () => {
       try {
         await client.getEntries()
         .then((entries) => {
-          console.log(entries);
           setBlogPost(entries)
         })
       } catch (error) {
@@ -37,7 +36,7 @@ const BlogList = () => {
                   <img src={post.fields.blogImage.fields.file.url} title="" alt={post.fields.title} width="578" height="291" />
                   <h2 className="post-title pt-3">{post.fields.title}</h2>
                   <p className="post-meta">
-                    By <span href="https://thecodeangle.com/" className="post-author">{post.fields.blogAuthor}</span> Date <span></span>
+                    By <span href="#" className="post-author">{post.fields.blogAuthor}</span> Date <span></span>
                     <small>
                       {new Intl.DateTimeFormat('en-GB', {
                         month: 'long',
@@ -64,7 +63,7 @@ const BlogList = () => {
           <div className="footer">
             <div className="pure-menu pure-menu-horizontal">
               <div className="pure-menu-item">
-                <a href="http://twitter.com/thecodeangle" className="pure-menu-link">Twitter</a>
+                <a href="#" className="pure-menu-link">Twitter</a>
               </div>
             </div>
           </div>
